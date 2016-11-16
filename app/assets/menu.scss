@@ -5,6 +5,9 @@
     overflow-y: auto;
     a {
         color: #333;
+        &:hover {
+            text-decoration: none;
+        }
     }
     .pure-menu-heading {
         font-weight: bold;

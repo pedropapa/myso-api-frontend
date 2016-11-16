@@ -1,34 +1,46 @@
 <h1>Listing Classes</h1>
 
-<p><button class="pure-button pure-button-primary" ng-click="new()">New Class</button></p>
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New Class</button>
+</p>
 
 <div class="table-container">
-    <table class="pure-table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Length</th>
-            <th>Vimeo Link</th>
-            <th>Class Style</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Watch</th>
+			<th>Action</th>
+		</tr>
+		</thead>
 
-        <tbody>
-        <tr class="pure-table-odd" ng-repeat="_class in classes">
-            <td>{{ _class.id }}</td>
-            <td>{{ _class.ds_title }}</td>
-            <td>{{ _class.ds_description }}</td>
-            <td>{{ _class.nu_length }}</td>
-            <td>{{ _class.ds_vimeo_link }}</td>
-            <td>{{ _class.classStyle.title }}</td>
-            <td>
-                <button class="pure-button" ng-click="edit(_class)">Edit</button>
-                <button class="button-red pure-button" ng-click="remove(_class)">Remove</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+		<tbody>
+		<tr ng-repeat="_class in classes">
+			<td>{{ _class.id }}</td>
+			<td class="title">{{ _class.ds_title }}</td>
+			<td>
+				<p>{{ _class.ds_description }}</p>
+				<p>
+					Class style: <strong>{{ _class.classStyle.title }}</strong>
+					<span class="sep">&middot;</span>
+					Lenght: {{ _class.nu_length }}
+
+				</p>
+			</td>
+			<td>
+				<a href="{{ _class.ds_vimeo_link }}" class="pure-button pure-button-primary" rel="nofollow"
+				   target="_blank">
+					Watch</a>
+			</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(_class)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(_class)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
 </div>

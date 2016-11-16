@@ -6,6 +6,20 @@
 @import 'assets/footer.scss';
 @import 'assets/button.scss';
 
+a {
+    color: #38618C;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+    &.pure-button {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+
 h1,
 h2,
 h3 {

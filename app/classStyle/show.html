@@ -7,32 +7,36 @@
 </p>
 
 <div class="table-container">
-	<table class="pure-table">
+	<table class="pure-table pure-table-horizontal">
 		<thead>
-		<tr>
-			<th>#</th>
-			<th>Description</th>
-			<th>Title</th>
-			<th>Level</th>
-			<th>Studio</th>
-			<th>Action</th>
-		</tr>
+			<tr>
+				<th>#</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Actions</th>
+			</tr>
 		</thead>
 
 		<tbody>
-		<tr class="pure-table-odd" ng-repeat="classStyle in classStyles">
-			<td>{{ classStyle.id }}</td>
-			<td>{{ classStyle.description }}</td>
-			<td>{{ classStyle.title }}</td>
-			<td>{{ classStyle.level }}</td>
-			<td>{{ classStyle.studio.name }}</td>
-			<td>
-				<button class="pure-button"
-					   ng-click="edit(classStyle)">Edit</button>
-				<button class="button-red pure-button"
-					   ng-click="remove(classStyle)">Remove</button>
-			</td>
-		</tr>
+			<!-- inicio @@ repetir estes dois <tr> a cada registro/ID @@ -->
+			<tr ng-repeat="classStyle in classStyles">
+				<td>{{ classStyle.id }}</td>
+				<td class="title">{{ classStyle.title }}</td>
+				<td>
+					<p>{{ classStyle.description }}</p>
+					<p>
+						Level: <strong>{{ classStyle.level }}</strong>
+						<span class="sep">&middot;</span>
+						Studio: <strong>{{ classStyle.studio.name }}</strong>
+					</p>
+				</td>
+				<td class="actions">
+					<button class="pure-button" ng-click="edit(classStyle)">Edit</button>
+					<button class="button-red pure-button" ng-click="remove(classStyle)">
+						<img src="assets/icon-trash.svg" alt="Remove" />
+					</button>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

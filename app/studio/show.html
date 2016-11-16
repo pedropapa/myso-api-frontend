@@ -1,44 +1,55 @@
 <h1>Listing Studios</h1>
 
-<p><button class="pure-button pure-button-primary" ng-click="new()">New Studio</button></p>
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New Studio</button>
+</p>
 
 <div class="table-container">
-    <table class="pure-table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Link</th>
-            <th>Primary Color</th>
-            <th>Secondary Color</th>
-            <th>Logo</th>
-            <th>Homepage</th>
-            <th>About</th>
-            <th>Registration Page</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
 
-        <tbody>
-        <tr class="pure-table-odd" ng-repeat="studio in studios">
-            <td>{{ studio.id }}</td>
-            <td>{{ studio.name }}</td>
-            <td>{{ studio.link }}</td>
-            <td>
-                <div style="background-color: {{ studio.primary_color_scheme }}; width: 30px; height: 30px"></div>
-            </td>
-            <td>
-                <div style="background-color: {{ studio.secondary_color_scheme }}; width: 30px; height: 30px"></div>
-            </td>
-            <td><img src="{{ studio.logo }}" class="pure-img" alg="Logo" /></td>
-            <td>{{ studio.ds_homepage }}</td>
-            <td>{{ studio.ds_about_us }}</td>
-            <td>{{ studio.ds_registration_page }}</td>
-            <td>
-                <button class="pure-button" ng-click="edit(studio)">Edit</button>
-                <button class="button-red pure-button" ng-click="remove(studio)">Remove</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+			<th>Logo</th>
+			<th>Name</th>
+
+			<th>About</th>
+			<th>Colors</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="studio in studios">
+			<td>{{ studio.id }}</td>
+			<td class="studio-logo">
+				<img src="{{ studio.logo }}" class="pure-img" alg="Logo"/>
+			</td>
+			<td class="title">
+				<a href="{{ studio.link }}" target="_blank" rel="nofollow">
+					{{ studio.name }}
+				</a>
+			</td>
+			<td>
+				<p>{{ studio.ds_about_us }}</p>
+				<p>{{ studio.ds_homepage }}</p>
+				<p>{{ studio.ds_registration_page }}</p>
+			</td>
+			<td>
+				<div style="background-color: {{ studio.primary_color_scheme }};
+						width: 18px; height: 18px; display: inline-block"
+					title="{{ studio.primary_color_scheme }}">&nbsp;</div>
+				<div style="background-color: {{ studio.secondary_color_scheme }};
+						width: 18px; height: 18px; display: inline-block"
+					title="{{ studio.secondary_color_scheme }}">&nbsp;</div>
+			</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(studio)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(studio)">
+					<img src="assets/icon-trash.svg" alt="Remove"/>
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
 </div>

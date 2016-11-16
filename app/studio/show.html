@@ -1,10 +1,9 @@
-<h3>Listing Studios</h3>
+<h1>Listing Studios</h1>
 
-<button class="pure-button pure-button-primary" ng-click="new()">New Studio</button>
-<br />
-<br />
-<div style="text-align: center">
-    <table class="pure-table" style="width: 700px">
+<p><button class="pure-button pure-button-primary" ng-click="new()">New Studio</button></p>
+
+<div class="table-container">
+    <table class="pure-table">
         <thead>
         <tr>
             <th>#</th>
@@ -31,13 +30,13 @@
             <td>
                 <div style="background-color: {{ studio.secondary_color_scheme }}; width: 30px; height: 30px"></div>
             </td>
-            <td>{{ studio.logo }}</td>
+            <td><img src="{{ studio.logo }}" class="pure-img" alg="Logo" /></td>
             <td>{{ studio.ds_homepage }}</td>
             <td>{{ studio.ds_about_us }}</td>
             <td>{{ studio.ds_registration_page }}</td>
             <td>
-                <button class="pure-button pure-button-primary" ng-click="edit(studio)">Edit</button>
-                <button class="pure-button pure-button-primary" style="background-color: red" ng-click="remove(studio)">Remove</button>
+                <button class="pure-button" ng-click="edit(studio)">Edit</button>
+                <button class="button-red pure-button" ng-click="remove(studio)">Remove</button>
             </td>
         </tr>
         </tbody>

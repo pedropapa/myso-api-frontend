@@ -1,0 +1,16 @@
+/* app css stylesheet */
+
+@import 'assets/menu.scss';
+@import 'assets/container.scss';
+@import 'assets/table-container.scss';
+@import 'assets/footer.scss';
+@import 'assets/button.scss';
+
+h1,
+h2,
+h3 {
+    margin: 0.5rem 0;
+    @media (min-width: 500px) {
+        margin: 0.67em 0;
+    }
+}

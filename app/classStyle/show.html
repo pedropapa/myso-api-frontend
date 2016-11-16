@@ -1,33 +1,38 @@
-<h3>Listing Class Styles</h3>
+<h1>Listing Class Styles</h1>
 
-<button class="pure-button pure-button-primary" ng-click="new()">New Class Style</button>
-<br />
-<br />
-<div style="text-align: center">
-    <table class="pure-table" style="width: 700px">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Description</th>
-            <th>Title</th>
-            <th>Level</th>
-            <th>Studio</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">
+		New Class Style
+	</button>
+</p>
 
-        <tbody>
-        <tr class="pure-table-odd" ng-repeat="classStyle in classStyles">
-            <td>{{ classStyle.id }}</td>
-            <td>{{ classStyle.description }}</td>
-            <td>{{ classStyle.title }}</td>
-            <td>{{ classStyle.level }}</td>
-            <td>{{ classStyle.studio.name }}</td>
-            <td>
-                <button class="pure-button pure-button-primary" ng-click="edit(classStyle)">Edit</button>
-                <button class="pure-button pure-button-primary" style="background-color: red" ng-click="remove(classStyle)">Remove</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="table-container">
+	<table class="pure-table">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Description</th>
+			<th>Title</th>
+			<th>Level</th>
+			<th>Studio</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr class="pure-table-odd" ng-repeat="classStyle in classStyles">
+			<td>{{ classStyle.id }}</td>
+			<td>{{ classStyle.description }}</td>
+			<td>{{ classStyle.title }}</td>
+			<td>{{ classStyle.level }}</td>
+			<td>{{ classStyle.studio.name }}</td>
+			<td>
+				<button class="pure-button"
+					   ng-click="edit(classStyle)">Edit</button>
+				<button class="button-red pure-button"
+					   ng-click="remove(classStyle)">Remove</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
 </div>

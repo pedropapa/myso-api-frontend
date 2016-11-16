@@ -1,0 +1,26 @@
+<form class="pure-form pure-form-aligned" style="text-align: center" ng-submit="login(form)" ng-if="!token">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Username</label>
+            <input id="name" type="text" ng-model="form.username" placeholder="Username">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" ng-model="form.password" placeholder="Password">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" tourtip="You only need to login if you want to change data, otherwise just click an model name to view it's data" tourtip-placement="bottom" class="pure-button pure-button-primary">Submit</button>
+        </div>
+    </fieldset>
+</form>
+
+<div ng-if="token" style="text-align: center; margin: 0 auto">
+    <label>The auth token is already set!</label>
+    <br />
+    <b>{{ token.id }}</b>
+    <br />
+    <br />
+    <button class="pure-button pure-button-primary" tourtip="If you are getting authorization error messages on models management, try to reset the token and log-in again." tourtip-placement="bottom" ng-click="resetToken()">Reset it</button>
+</div>

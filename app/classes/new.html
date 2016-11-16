@@ -1,0 +1,34 @@
+<h3>New Class</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(_class)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" ng-model="_class.ds_title" placeholder="Title">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="description">Description</label>
+            <input id="description" type="text" ng-model="_class.ds_description" placeholder="Description">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="length">Length</label>
+            <input id="length" type="text" ng-model="_class.nu_length" placeholder="Length">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="vimeoLink">Vimeo Link</label>
+            <input id="vimeoLink" type="text" ng-model="_class.ds_vimeo_link" placeholder="Vimeo Link">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="studio">Class Style</label>
+            <select id="studio" ng-options="classStyle.id as classStyle.title for classStyle in classStyles" ng-model="_class.classStyleId"></select>
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,58 @@
+<h3>New Studio</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(studio)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" ng-model="studio.name" placeholder="Name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="link">Link</label>
+            <input id="link" type="text" ng-model="studio.link" placeholder="Link">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="primaryColor" style="float: left">Primary Color</label>
+
+            <color-picker
+                    id="primaryColor"
+                    ng-model="studio.primary_color_scheme"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="secondaryColor" style="float: left">Secondary Color</label>
+            <color-picker
+                    id="secondaryColor"
+                    ng-model="studio.secondary_color_scheme"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="logo">Logo</label>
+            <input id="logo" type="text" ng-model="studio.logo" placeholder="Logo">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="homepage">Homepage</label>
+            <input id="homepage" type="text" ng-model="studio.ds_homepage" placeholder="Homepage">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="aboutUs">About Us</label>
+            <input id="aboutUs" type="text" ng-model="studio.ds_about_us" placeholder="About Us">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="registrationPage">Registration Page</label>
+            <input id="registrationPage" type="text" ng-model="studio.ds_registration_page" placeholder="registrationPage">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div>
+    </fieldset>
+</form>

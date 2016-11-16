@@ -1,0 +1,45 @@
+<h3>Listing Studios</h3>
+
+<button class="pure-button pure-button-primary" ng-click="new()">New Studio</button>
+<br />
+<br />
+<div style="text-align: center">
+    <table class="pure-table" style="width: 700px">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Link</th>
+            <th>Primary Color</th>
+            <th>Secondary Color</th>
+            <th>Logo</th>
+            <th>Homepage</th>
+            <th>About</th>
+            <th>Registration Page</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="pure-table-odd" ng-repeat="studio in studios">
+            <td>{{ studio.id }}</td>
+            <td>{{ studio.name }}</td>
+            <td>{{ studio.link }}</td>
+            <td>
+                <div style="background-color: {{ studio.primary_color_scheme }}; width: 30px; height: 30px"></div>
+            </td>
+            <td>
+                <div style="background-color: {{ studio.secondary_color_scheme }}; width: 30px; height: 30px"></div>
+            </td>
+            <td>{{ studio.logo }}</td>
+            <td>{{ studio.ds_homepage }}</td>
+            <td>{{ studio.ds_about_us }}</td>
+            <td>{{ studio.ds_registration_page }}</td>
+            <td>
+                <button class="pure-button pure-button-primary" ng-click="edit(studio)">Edit</button>
+                <button class="pure-button pure-button-primary" style="background-color: red" ng-click="remove(studio)">Remove</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

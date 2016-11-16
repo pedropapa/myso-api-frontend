@@ -22,7 +22,7 @@
         return originalWhen.call($routeProvider, path, route);
       };
 
-      $routeProvider.otherwise({redirectTo: '/view1'});
+      $routeProvider.otherwise({redirectTo: '/login'});
 
       $httpProvider.interceptors.push('httpInterceptor');
     }])

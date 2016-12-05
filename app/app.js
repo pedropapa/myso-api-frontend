@@ -39,12 +39,13 @@
     'StudioModule',
     'ClassesModule',
     'ClassStyleModule',
+    'InstructorModule',
     'myApp.version',
     'color.picker'
   ])
     .constant('consts', {
-      url: 'http://107.170.68.212:5000',
-      apiUrl: 'http://107.170.68.212:5000/api'
+      url: 'http://localhost:5000',
+      apiUrl: 'http://localhost:5000/api'
     })
     .factory('httpInterceptor', ['$q', '$location', '$cookies', function($q, $location, $cookies) {
       return {

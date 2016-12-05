@@ -4,22 +4,22 @@
     <fieldset>
         <div class="pure-control-group">
             <label for="description">Description</label>
-            <input id="description" type="text" ng-model="classStyle.description" placeholder="Description">
+            <input id="description" type="text" ng-model="classStyle.ds_description" placeholder="Description">
         </div>
 
         <div class="pure-control-group">
             <label for="title">Title</label>
-            <input id="title" type="text" ng-model="classStyle.title" placeholder="Title">
+            <input id="title" type="text" ng-model="classStyle.ds_title" placeholder="Title">
         </div>
 
         <div class="pure-control-group">
             <label for="level">Level</label>
-            <input id="level" type="text" ng-model="classStyle.level" placeholder="Level">
+            <input id="level" type="text" ng-model="classStyle.nu_level" placeholder="Level">
         </div>
 
         <div class="pure-control-group">
             <label for="studio">Studio</label>
-            <select id="studio" ng-options="studio.id as studio.name for studio in studios" ng-model="classStyle.studioId"></select>
+            <select id="studio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="classStyle.studioId"></select>
         </div>
 
         <div class="pure-controls">

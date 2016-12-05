@@ -21,13 +21,13 @@
 			<!-- inicio @@ repetir estes dois <tr> a cada registro/ID @@ -->
 			<tr ng-repeat="classStyle in classStyles">
 				<td>{{ classStyle.id }}</td>
-				<td class="title">{{ classStyle.title }}</td>
+				<td class="title">{{ classStyle.ds_title }}</td>
 				<td>
-					<p>{{ classStyle.description }}</p>
+					<p>{{ classStyle.ds_description }}</p>
 					<p>
-						Level: <strong>{{ classStyle.level }}</strong>
+						Level: <strong>{{ classStyle.nu_level }}</strong>
 						<span class="sep">&middot;</span>
-						Studio: <strong>{{ classStyle.studio.name }}</strong>
+						Studio: <strong>{{ classStyle.studio.no_name }}</strong>
 					</p>
 				</td>
 				<td class="actions">

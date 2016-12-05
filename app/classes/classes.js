@@ -15,7 +15,7 @@
             });
           }],
           classes: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Classes').then(function (response) {
+            return $http.get(consts.apiUrl + '/Classes', {params: {filter: {include: "classStyle"}}}).then(function (response) {
               return response.data;
             }, function (err) {
               return false;
@@ -87,10 +87,6 @@
           });
         };
 
-        _.forEach(classes, function(_class) {
-          _class.classStyle = _.find(classStyles, {id: _class.classStyleId});
-        });
-
         $scope.classStyles = classStyles;
         $scope.classes = classes;
       }])
@@ -122,6 +118,8 @@
     .controller('ClassesNewController', ['$scope', 'classStyles', 'ngDialog', '$http', '$route', 'consts',
       function ($scope, classStyles, ngDialog, $http, $route, consts) {
         $scope.submit = function (_class) {
+          _class.dt_create = new Date();
+
           $http.post(consts.apiUrl + '/Classes', _class)
             .then(function (response) {
 

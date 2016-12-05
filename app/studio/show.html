@@ -23,11 +23,11 @@
 		<tr ng-repeat="studio in studios">
 			<td>{{ studio.id }}</td>
 			<td class="studio-logo">
-				<img src="{{ studio.logo }}" class="pure-img" alg="Logo"/>
+				<img src="{{ studio.ds_logo }}" class="pure-img" alg="Logo"/>
 			</td>
 			<td class="title">
-				<a href="{{ studio.link }}" target="_blank" rel="nofollow">
-					{{ studio.name }}
+				<a href="{{ studio.ds_link }}" target="_blank" rel="nofollow">
+					{{ studio.no_name }}
 				</a>
 			</td>
 			<td>
@@ -36,12 +36,12 @@
 				<p>{{ studio.ds_registration_page }}</p>
 			</td>
 			<td>
-				<div style="background-color: {{ studio.primary_color_scheme }};
+				<div style="background-color: {{ studio.nu_primary_color_scheme }};
 						width: 18px; height: 18px; display: inline-block"
-					title="{{ studio.primary_color_scheme }}">&nbsp;</div>
-				<div style="background-color: {{ studio.secondary_color_scheme }};
+					title="{{ studio.nu_primary_color_scheme }}">&nbsp;</div>
+				<div style="background-color: {{ studio.nu_secondary_color_scheme }};
 						width: 18px; height: 18px; display: inline-block"
-					title="{{ studio.secondary_color_scheme }}">&nbsp;</div>
+					title="{{ studio.nu_secondary_color_scheme }}">&nbsp;</div>
 			</td>
 			<td class="actions">
 				<button class="pure-button" ng-click="edit(studio)">Edit</button>

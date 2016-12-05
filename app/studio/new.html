@@ -4,12 +4,12 @@
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Name</label>
-            <input id="name" type="text" ng-model="studio.name" placeholder="Name">
+            <input id="name" type="text" ng-model="studio.ds_first_name" placeholder="Name">
         </div>
 
         <div class="pure-control-group">
             <label for="link">Link</label>
-            <input id="link" type="text" ng-model="studio.link" placeholder="Link">
+            <input id="link" type="text" ng-model="studio.ds_link" placeholder="Link">
         </div>
 
         <div class="pure-control-group">
@@ -17,7 +17,7 @@
 
             <color-picker
                     id="primaryColor"
-                    ng-model="studio.primary_color_scheme"
+                    ng-model="studio.nu_primary_color_scheme"
                     options="{format: 'hex'}"
             ></color-picker>
         </div>
@@ -26,14 +26,14 @@
             <label for="secondaryColor" style="float: left">Secondary Color</label>
             <color-picker
                     id="secondaryColor"
-                    ng-model="studio.secondary_color_scheme"
+                    ng-model="studio.nu_secondary_color_scheme"
                     options="{format: 'hex'}"
             ></color-picker>
         </div>
 
         <div class="pure-control-group">
             <label for="logo">Logo</label>
-            <input id="logo" type="text" ng-model="studio.logo" placeholder="Logo">
+            <input id="logo" type="text" ng-model="studio.ds_logo" placeholder="Logo">
         </div>
 
         <div class="pure-control-group">

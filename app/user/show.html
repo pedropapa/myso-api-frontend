@@ -1,0 +1,42 @@
+<h1>Listing Users</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New User</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Display Name</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Profile Picture</th>
+			<th>Facebook Token</th>
+			<th>Stripe ID</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="user in users">
+			<td>{{ user.id }}</td>
+			<td class="title">{{ user.ds_display_name }}</td>
+			<td class="title">{{ user.ds_first_name }}</td>
+			<td class="title">{{ user.ds_last_name }}</td>
+			<td class="title">
+				<img ng-src="{{ user.ds_profile_picture }}" class="pure-img" alg="Logo"/>
+			</td>
+			<td class="title">{{ user.ds_facebook_access_token }}</td>
+			<td class="title">{{ user.co_stripe_account }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(user)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(user)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

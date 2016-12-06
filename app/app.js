@@ -40,6 +40,7 @@
     'ClassesModule',
     'ClassStyleModule',
     'InstructorModule',
+    'UserModule',
     'myApp.version',
     'color.picker'
   ])

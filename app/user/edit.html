@@ -1,0 +1,39 @@
+<h3>Editing User</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(user)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="display_name">Display name</label>
+            <input id="display_name" type="text" ng-model="user.ds_display_name" placeholder="Display name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="first_name">First name</label>
+            <input id="first_name" type="text" ng-model="user.ds_first_name" placeholder="First name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="last_name">Last name</label>
+            <input id="last_name" type="text" ng-model="user.ds_last_name" placeholder="Last name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" ng-model="user.password" placeholder="Password">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" ng-model="user.email" placeholder="E-mail">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="vimeoLink">Profile Picture (URL)</label>
+            <input id="vimeoLink" type="text" ng-model="user.ds_profile_picture" placeholder="Profile picture">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

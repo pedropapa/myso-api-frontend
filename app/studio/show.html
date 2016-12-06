@@ -23,7 +23,7 @@
 		<tr ng-repeat="studio in studios">
 			<td>{{ studio.id }}</td>
 			<td class="studio-logo">
-				<img src="{{ studio.ds_logo }}" class="pure-img" alg="Logo"/>
+				<img ng-src="{{ studio.ds_logo }}" class="pure-img" alg="Logo"/>
 			</td>
 			<td class="title">
 				<a href="{{ studio.ds_link }}" target="_blank" rel="nofollow">

@@ -1,21 +1,14 @@
 (function (angular, noty) {
   "use strict";
 
-  angular.module('ClassesModule', ['myApp', 'ngRoute'])
+  angular.module('UserModule', ['myApp', 'ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
-      $routeProvider.when('/classes', {
-        templateUrl: 'classes/show.html',
-        controller: 'ClassesController',
+      $routeProvider.when('/user', {
+        templateUrl: 'user/show.html',
+        controller: 'UserController',
         resolve: {
-          classStyles: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/ClassStyles').then(function (response) {
-              return response.data;
-            }, function (err) {
-              return false;
-            });
-          }],
-          classes: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Classes', {params: {filter: {include: "classStyle"}}}).then(function (response) {
+          users: ['consts', '$http', 'ApiService', function (consts, $http) {
+            return $http.get(consts.apiUrl + '/Users').then(function (response) {
               return response.data;
             }, function (err) {
               return false;
@@ -25,39 +18,39 @@
       });
     }])
 
-    .controller('ClassesController', ['$scope', 'classStyles', 'classes', 'ngDialog', '$http', 'consts', '$route',
-      function ($scope, classStyles, classes, ngDialog, $http, consts, $route) {
-        $scope.edit = function (_class) {
+    .controller('UserController', ['$scope', 'users', 'ngDialog', '$http', 'consts', '$route',
+      function ($scope, users, ngDialog, $http, consts, $route) {
+        $scope.edit = function (user) {
           ngDialog.open({
-            template: 'classes/edit.html',
+            template: 'user/edit.html',
             className: 'ngdialog-theme-default',
             width: '70%',
-            controller: 'ClassesEditController',
+            controller: 'UserEditController',
             resolve: {
-              _class: [function () {
-                return _class;
+              user: [function () {
+                return user;
               }],
-              classStyles: [function () {
-                return classStyles;
+              users: [function () {
+                return users;
               }]
             }
           });
         };
 
-        $scope.remove = function (_class) {
+        $scope.remove = function (user) {
           ngDialog.openConfirm({
             template: '\
-                <p>Do you really want to remove this Class?</p>\
+                <p>Do you really want to remove this User?</p>\
                 <div class="ngdialog-buttons">\
                     <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>\
                     <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Yes</button>\
                 </div>',
             plain: true
           }).then(function (confirm) {
-            $http.delete(consts.apiUrl + '/Classes/' + _class.id)
+            $http.delete(consts.apiUrl + '/Users/' + user.id)
               .then(function (response) {
 
-                noty({type: 'warning', text: 'Class removed'});
+                noty({type: 'warning', text: 'User removed'});
                 $route.reload();
               }, function (err) {
                 if (err.data.error && err.data.error.message) {
@@ -75,25 +68,24 @@
 
         $scope.new = function () {
           ngDialog.open({
-            template: 'classes/new.html',
+            template: 'user/new.html',
             className: 'ngdialog-theme-default',
             width: '70%',
-            controller: 'ClassesNewController',
+            controller: 'UserNewController',
             resolve: {
-              classStyles: [function () {
-                return classStyles;
+              users: [function () {
+                return users;
               }]
             }
           });
         };
 
-        $scope.classStyles = classStyles;
-        $scope.classes = classes;
+        $scope.users = users;
       }])
-    .controller('ClassesEditController', ['$scope', 'classStyles', '_class', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, classStyles, _class, ngDialog, $http, $route, consts) {
-        $scope.submit = function (_class) {
-          $http.post(consts.apiUrl + '/Classes/update', _class, {params: {where: {id: _class.id}}})
+    .controller('UserEditController', ['$scope', 'users', 'user', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, users, user, ngDialog, $http, $route, consts) {
+        $scope.submit = function (user) {
+          $http.post(consts.apiUrl + '/Users/update', user, {params: {where: {id: user.id}}})
             .then(function (response) {
 
               noty({type: 'success', text: 'Changes saved '});
@@ -112,18 +104,18 @@
             });
         };
 
-        $scope.classStyles = angular.copy(classStyles);
-        $scope._class = angular.copy(_class);
+        $scope.users = angular.copy(users);
+        $scope.user = angular.copy(user);
       }])
-    .controller('ClassesNewController', ['$scope', 'classStyles', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, classStyles, ngDialog, $http, $route, consts) {
-        $scope.submit = function (_class) {
-          _class.dt_create = new Date();
+    .controller('UserNewController', ['$scope', 'users', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, users, ngDialog, $http, $route, consts) {
+        $scope.submit = function (user) {
+          user.dt_create = new Date();
 
-          $http.post(consts.apiUrl + '/Classes', _class)
+          $http.post(consts.apiUrl + '/Users', user)
             .then(function (response) {
 
-              noty({type: 'success', text: 'Class saved'});
+              noty({type: 'success', text: 'User saved'});
               $scope.closeThisDialog();
               $route.reload();
             }, function (err) {
@@ -139,8 +131,8 @@
             });
         };
 
-        $scope._class = {};
-        $scope.classStyles = classStyles;
+        $scope.user = {};
+        $scope.users = users;
       }])
   ;
 })(angular, noty);

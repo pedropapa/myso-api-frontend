@@ -18,6 +18,11 @@
         </div>
 
         <div class="pure-control-group">
+            <label for="thumbnail">thumbnail</label>
+            <input id="thumbnail" type="text" ng-model="classStyle.ds_thumbnail" placeholder="Thumbnail">
+        </div>
+
+        <div class="pure-control-group">
             <label for="studio">Studio</label>
             <select id="studio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="classStyle.studioId"></select>
         </div>

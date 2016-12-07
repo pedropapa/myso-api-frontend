@@ -13,6 +13,7 @@
 				<th>#</th>
 				<th>Title</th>
 				<th>Description</th>
+				<th>Thumbnail</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -29,6 +30,9 @@
 						<span class="sep">&middot;</span>
 						Studio: <strong>{{ classStyle.studio.no_name }}</strong>
 					</p>
+				</td>
+				<td class="studio-logo">
+					<img ng-src="{{ classStyle.ds_thumbnail }}" class="pure-img" alg="Thumbnail"/>
 				</td>
 				<td class="actions">
 					<button class="pure-button" ng-click="edit(classStyle)">Edit</button>

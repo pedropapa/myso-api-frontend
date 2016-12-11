@@ -1,0 +1,34 @@
+<h1>Listing Plans</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New Plan</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Cost</th>
+			<th>Studio</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="plan in plans">
+			<td>{{ plan.id }}</td>
+			<td>{{ plan.name }}</td>
+			<td class="title">${{ plan.amount/100 }}/{{ plan.interval }}</td>
+			<td class="title">{{ plan.studio.no_name }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(plan)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(plan)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

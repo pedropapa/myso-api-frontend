@@ -1,0 +1,57 @@
+<h3>New Plan</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(plan)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" ng-model="plan.amount" placeholder="Name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="statement_descriptor">Credit Card Description</label>
+            <input id="statement_descriptor" type="text" ng-model="plan.statement_descriptor" placeholder="Credit Card Description">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="amount">Amount</label>
+            <input id="amount" type="text" ng-model="plan.amount" placeholder="Amount">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="currency">Currency</label>
+            <select id="currency" ng-model="plan.currency">
+                <option value="usd">USD</option>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="interval">Interval</label>
+            <select id="interval" ng-model="plan.interval">
+                <option value="day">Day</option>
+                <option value="Week">Week</option>
+                <option value="Month">Month</option>
+                <option value="Year">Year</option>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="interval_count">Interval Count</label>
+            <i>The number of intervals (specified in the interval property) between each subscription billing. For example, interval=month and interval_count=3 bills every 3 months.</i>
+            <input id="interval_count" type="text" ng-model="plan.interval_count" placeholder="Interval Count">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="studio">Studio</label>
+            <select id="studio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="plan.studioId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="trial_period_days">Days of Trial Period</label>
+            <input id="trial_period_days" type="number" ng-model="plan.trial_period_days" value="0" placeholder="Days of Trial Period">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

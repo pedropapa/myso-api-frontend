@@ -40,6 +40,8 @@
     'ClassesModule',
     'ClassStyleModule',
     'InstructorModule',
+    'CustomerModule',
+    'ClassInstructorModule',
     'PlanModule',
     'UserModule',
     'myApp.version',

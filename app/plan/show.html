@@ -19,8 +19,8 @@
 		<tbody>
 		<tr ng-repeat="plan in plans">
 			<td>{{ plan.id }}</td>
-			<td>{{ plan.name }}</td>
-			<td class="title">${{ plan.amount/100 }}/{{ plan.interval }}</td>
+			<td>{{ plan.stripe_info.name }}</td>
+			<td class="title">${{ plan.stripe_info.amount/100 }}/{{ plan.stripe_info.interval }}</td>
 			<td class="title">{{ plan.studio.no_name }}</td>
 			<td class="actions">
 				<button class="pure-button" ng-click="edit(plan)">Edit</button>

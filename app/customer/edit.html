@@ -1,0 +1,19 @@
+<h3>Editing Customer</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(customer)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="user">User</label>
+            <select id="user" ng-options="user.id as user.ds_first_name for user in users" ng-model="customer.userId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="stripeId">Stripe ID</label>
+            <input id="stripeId" type="text" ng-model="customer.co_stripe_customer" placeholder="Stripe ID">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

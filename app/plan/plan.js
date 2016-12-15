@@ -8,7 +8,7 @@
         controller: 'PlanController',
         resolve: {
           plans: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Plans').then(function (response) {
+            return $http.get(consts.apiUrl + '/Plans', {params: {filter: {include: ["studio"]}}}).then(function (response) {
               return response.data;
             }, function (err) {
               return false;

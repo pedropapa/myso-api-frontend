@@ -1,21 +1,14 @@
 (function (angular, noty) {
   "use strict";
 
-  angular.module('InstructorModule', ['myApp', 'ngRoute'])
+  angular.module('CustomerModule', ['myApp', 'ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
-      $routeProvider.when('/instructor', {
-        templateUrl: 'instructor/show.html',
-        controller: 'InstructorController',
+      $routeProvider.when('/customer', {
+        templateUrl: 'customer/show.html',
+        controller: 'CustomerController',
         resolve: {
-          instructors: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Instructors', {params: {filter: {include: ["user", "studio"]}}}).then(function (response) {
-              return response.data;
-            }, function (err) {
-              return false;
-            });
-          }],
-          studios: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Studios').then(function (response) {
+          customers: ['consts', '$http', 'ApiService', function (consts, $http) {
+            return $http.get(consts.apiUrl + '/Customers', {params: {filter: {include: ["user"]}}}).then(function (response) {
               return response.data;
             }, function (err) {
               return false;
@@ -32,42 +25,39 @@
       });
     }])
 
-    .controller('InstructorController', ['$scope', 'studios', 'users', 'instructors', 'ngDialog', '$http', 'consts', '$route',
-      function ($scope, studios, users, instructors, ngDialog, $http, consts, $route) {
-        $scope.edit = function (instructor) {
+    .controller('CustomerController', ['$scope', 'users', 'customers', 'ngDialog', '$http', 'consts', '$route',
+      function ($scope, users, customers, ngDialog, $http, consts, $route) {
+        $scope.edit = function (customer) {
           ngDialog.open({
-            template: 'instructor/edit.html',
+            template: 'customer/edit.html',
             className: 'ngdialog-theme-default',
             width: '70%',
-            controller: 'InstructorEditController',
+            controller: 'CustomerEditController',
             resolve: {
-              instructor: [function () {
-                return instructor;
+              customer: [function () {
+                return customer;
               }],
               users: [function () {
                 return users;
-              }],
-              studios: [function () {
-                return studios;
               }]
             }
           });
         };
 
-        $scope.remove = function (instructor) {
+        $scope.remove = function (customer) {
           ngDialog.openConfirm({
             template: '\
-                <p>Do you really want to remove this Instructor?</p>\
+                <p>Do you really want to remove this Customer?</p>\
                 <div class="ngdialog-buttons">\
                     <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>\
                     <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Yes</button>\
                 </div>',
             plain: true
           }).then(function (confirm) {
-            $http.delete(consts.apiUrl + '/Instructors/' + instructor.id)
+            $http.delete(consts.apiUrl + '/Customers/' + customer.id)
               .then(function (response) {
 
-                noty({type: 'warning', text: 'Instructor removed'});
+                noty({type: 'warning', text: 'Customer removed'});
                 $route.reload();
               }, function (err) {
                 if (err.data.error && err.data.error.message) {
@@ -85,29 +75,25 @@
 
         $scope.new = function () {
           ngDialog.open({
-            template: 'instructor/new.html',
+            template: 'customer/new.html',
             className: 'ngdialog-theme-default',
             width: '70%',
-            controller: 'InstructorNewController',
+            controller: 'CustomerNewController',
             resolve: {
               users: [function () {
                 return users;
-              }],
-              studios: [function () {
-                return studios;
               }]
             }
           });
         };
 
-        $scope.instructors = instructors;
+        $scope.customers = customers;
         $scope.users = users;
-        $scope.studios = studios;
       }])
-    .controller('InstructorEditController', ['$scope', 'studios', 'users', 'instructor', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, studios, users, instructor, ngDialog, $http, $route, consts) {
-        $scope.submit = function (instructor) {
-          $http.post(consts.apiUrl + '/Instructors/update', instructor, {params: {where: {id: instructor.id}}})
+    .controller('CustomerEditController', ['$scope', 'users', 'customer', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, users, customer, ngDialog, $http, $route, consts) {
+        $scope.submit = function (customer) {
+          $http.post(consts.apiUrl + '/Customers/update', customer, {params: {where: {id: customer.id}}})
             .then(function (response) {
 
               noty({type: 'success', text: 'Changes saved '});
@@ -127,18 +113,17 @@
         };
 
         $scope.users = angular.copy(users);
-        $scope.instructor = angular.copy(instructor);
-        $scope.studios = studios;
+        $scope.customer = angular.copy(customer);
       }])
-    .controller('InstructorNewController', ['$scope', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, studios, users, ngDialog, $http, $route, consts) {
-        $scope.submit = function (instructor) {
-          instructor.dt_create = new Date();
+    .controller('CustomerNewController', ['$scope', 'users', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, users, ngDialog, $http, $route, consts) {
+        $scope.submit = function (customer) {
+          customer.dt_create = new Date();
 
-          $http.post(consts.apiUrl + '/Instructors', instructor)
+          $http.post(consts.apiUrl + '/Customers', customer)
             .then(function (response) {
 
-              noty({type: 'success', text: 'Instructor saved'});
+              noty({type: 'success', text: 'Customer saved'});
               $scope.closeThisDialog();
               $route.reload();
             }, function (err) {
@@ -154,9 +139,8 @@
             });
         };
 
-        $scope.instructor = {};
+        $scope.customer = {};
         $scope.users = users;
-        $scope.studios = studios;
       }])
   ;
 })(angular, noty);

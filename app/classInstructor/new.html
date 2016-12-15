@@ -1,0 +1,19 @@
+<h3>New ClassInstructor</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(classInstructor)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="instructor">Instructor</label>
+            <select id="instructor" ng-options="instructor.id as instructor.user.ds_first_name for instructor in instructors" ng-model="classInstructor.instructorId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="class">Class</label>
+            <select id="class" ng-options="class.id as class.ds_title for class in classes" ng-model="classInstructor.classId"></select>
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

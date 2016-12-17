@@ -1,0 +1,32 @@
+<h1>Listing Referrals</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New Referral</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>User</th>
+			<th>Referral</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="referral in referrals">
+			<td>{{ referral.id }}</td>
+			<td class="title">{{ referral.user.ds_first_name }}</td>
+			<td class="title">{{ referral.referral.ds_first_name }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(referral)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(referral)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

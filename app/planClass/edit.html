@@ -1,0 +1,14 @@
+<h3>Editing PlanClass</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(planClass)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="plan">Plan</label>
+            <select id="plan" ng-options="plan.id as plan.stripe_info.name for plan in plans" ng-model="planClass.planId"></select>
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

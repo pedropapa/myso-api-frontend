@@ -1,0 +1,54 @@
+<h3>New PlanClass</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(planClasses)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="plan">Plan</label>
+            <select id="plan" ng-options="plan.id as plan.studio.no_name + ' - ' + plan.stripe_info.name for plan in plans"
+                    ng-model="formData.planId"></select>
+        </div>
+
+        <hr/>
+
+        <div class="pure-control-group">
+            <label for="studio">All classes from Studio</label>
+            <select id="studio" ng-options="studio as studio.no_name for studio in studios"
+                    ng-model="formData.studio"></select>
+            <button type="button" class="pure-button-primary" ng-click="allFromStudio(formData.studio, formData)">ADD</button>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="classStyle">All classes from Class Style</label>
+            <select id="classStyle" ng-options="classStyle as classStyle.studio.no_name + ' - ' + classStyle.ds_title for classStyle in classStyles"
+                    ng-model="formData.classStyle"></select>
+            <button type="button" class="pure-button-primary" ng-click="allFromClassStyle(formData.classStyle, formData)">ADD</button>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="class">Individual Class</label>
+            <select id="class" ng-options="class as class.classStyle.studio.no_name + ' - ' + class.classStyle.ds_title + ' - ' + class.ds_title for class in classes"
+                    ng-model="formData.class"></select>
+            <button type="button" class="pure-button-primary" ng-click="fromClass(formData.class, formData)">ADD</button>
+        </div>
+
+        <hr/>
+
+        <h3>Classes selected</h3>
+
+        <div ng-if="planClasses.length">
+            <div ng-repeat="planClass in planClasses">
+                <span ng-if="planClass.accessTypeId == 1">All classes from studio <b>{{ planClass.studio.no_name }}</b>. <button class="pure-button" ng-click="removePlanClass(planClass)" type="button">Remove</button></span>
+                <span ng-if="planClass.accessTypeId == 2">All classes from classStyle <b>{{ planClass.classStyle.ds_title }}</b> of the studio <b>{{ planClass.classStyle.studio.no_name }}</b> <button class="pure-button" ng-click="removePlanClass(planClass)" type="button">Remove</button></span>
+                <span ng-if="planClass.accessTypeId == 3">Class <b>{{ planClass._class.ds_title }}</b> of class style <b>{{ planClass._class.classStyle.ds_title }}</b> of the studio <b>{{ planClass._class.classStyle.studio.no_name }}</b> <button class="pure-button" ng-click="removePlanClass(planClass)" type="button">Remove</button></span>
+            </div>
+        </div>
+
+        <div ng-if="!planClasses.length">
+            <i>Select at least one class to be included in the Plan</i>
+        </div>
+
+        <div class="pure-controls" ng-if="planClasses.length">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

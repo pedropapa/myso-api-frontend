@@ -42,6 +42,8 @@
     'InstructorModule',
     'CustomerModule',
     'ClassInstructorModule',
+    'CustomerPlanModule',
+    'PlanClassModule',
     'PlanModule',
     'UserModule',
     'myApp.version',

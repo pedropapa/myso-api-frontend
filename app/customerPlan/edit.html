@@ -1,0 +1,24 @@
+<h3>Editing CustomerPlan</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(customerPlan)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="customer">Customer</label>
+            <select id="customer" ng-options="customer.id as customer.user.ds_first_name for customer in customers" ng-model="customerPlan.customerId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="plan">Plan</label>
+            <select id="plan" ng-options="plan.id as plan.stripe_info.name for plan in plans" ng-model="customerPlan.planId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="stripeId">Stripe ID</label>
+            <input id="stripeId" type="text" ng-model="customerPlan.co_stripe_subscription" placeholder="Stripe ID">
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

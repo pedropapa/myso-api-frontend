@@ -1,0 +1,36 @@
+<h1>Listing PlanClasses</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New PlanClass</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Plan</th>
+			<th>AccessType</th>
+			<th>Entity Name</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="planClass in planClasses">
+			<td>{{ planClass.id }}</td>
+			<td class="title">{{ planClass.plan.stripe_info.name }}</td>
+			<td class="title">{{ planClass.accessType.ds_name }}</td>
+			<td class="title" ng-if="planClass.accessType.id == 1">{{ planClass.studio.no_name }}</td>
+			<td class="title" ng-if="planClass.accessType.id == 2">{{ planClass.classStyle.ds_title }}</td>
+			<td class="title" ng-if="planClass.accessType.id == 3">{{ planClass.class.ds_title }}</td>
+			<td class="actions">
+				<!--<button class="pure-button" ng-click="edit(planClass)">Edit</button>-->
+				<button class="button-red pure-button" ng-click="remove(planClass)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

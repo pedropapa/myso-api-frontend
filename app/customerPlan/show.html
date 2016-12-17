@@ -1,0 +1,32 @@
+<h1>Listing CustomerPlans</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New CustomerPlan</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Customer</th>
+			<th>Plan</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="customerPlan in customerPlans">
+			<td>{{ customerPlan.id }}</td>
+			<td class="title">{{ customerPlan.customer.user.ds_first_name }}</td>
+			<td class="title">{{ customerPlan.plan.stripe_info.name }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(customerPlan)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(customerPlan)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

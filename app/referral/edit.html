@@ -3,8 +3,8 @@
 <form class="pure-form pure-form-aligned" ng-submit="submit(referral)">
     <fieldset>
         <div class="pure-control-group">
-            <label for="user">User</label>
-            <select id="user" ng-options="user.id as user.ds_first_name for user in users" ng-model="referral.userId"></select>
+            <label for="customer">Customer</label>
+            <select id="customer" ng-options="customer.user.id as customer.user.ds_first_name for customer in customers" ng-model="referral.userId"></select>
         </div>
 
         <div class="pure-control-group">

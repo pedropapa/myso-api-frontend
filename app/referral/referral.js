@@ -8,14 +8,14 @@
         controller: 'ReferralController',
         resolve: {
           referrals: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/UserReferrals', {params: {filter: {include: ["user", "referral"]}}}).then(function (response) {
+            return $http.get(consts.apiUrl + '/CustomerReferrals', {params: {filter: {include: ["user", "referral"]}}}).then(function (response) {
               return response.data;
             }, function (err) {
               return false;
             });
           }],
-          users: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Users').then(function (response) {
+          customers: ['consts', '$http', 'ApiService', function (consts, $http) {
+            return $http.get(consts.apiUrl + '/Customers', {params: {filter: {include: ["user"]}}}).then(function (response) {
               return response.data;
             }, function (err) {
               return false;
@@ -32,8 +32,8 @@
       });
     }])
 
-    .controller('ReferralController', ['$scope', 'instructors', 'users', 'referrals', 'ngDialog', '$http', 'consts', '$route',
-      function ($scope, instructors, users, referrals, ngDialog, $http, consts, $route) {
+    .controller('ReferralController', ['$scope', 'instructors', 'customers', 'referrals', 'ngDialog', '$http', 'consts', '$route',
+      function ($scope, instructors, customers, referrals, ngDialog, $http, consts, $route) {
         $scope.edit = function (referral) {
           ngDialog.open({
             template: 'referral/edit.html',
@@ -44,8 +44,8 @@
               referral: [function () {
                 return referral;
               }],
-              users: [function () {
-                return users;
+              customers: [function () {
+                return customers;
               }],
               instructors: [function () {
                 return instructors;
@@ -64,7 +64,7 @@
                 </div>',
             plain: true
           }).then(function (confirm) {
-            $http.delete(consts.apiUrl + '/UserReferrals/' + referral.id)
+            $http.delete(consts.apiUrl + '/CustomerReferrals/' + referral.id)
               .then(function (response) {
 
                 noty({type: 'warning', text: 'Referral removed'});
@@ -90,8 +90,8 @@
             width: '70%',
             controller: 'ReferralNewController',
             resolve: {
-              users: [function () {
-                return users;
+              customers: [function () {
+                return customers;
               }],
               instructors: [function () {
                 return instructors;
@@ -101,13 +101,13 @@
         };
 
         $scope.referrals = referrals;
-        $scope.users = users;
+        $scope.customers = customers;
         $scope.instructors = instructors;
       }])
-    .controller('ReferralEditController', ['$scope', 'instructors', 'users', 'referral', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, instructors, users, referral, ngDialog, $http, $route, consts) {
+    .controller('ReferralEditController', ['$scope', 'instructors', 'customers', 'referral', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, instructors, customers, referral, ngDialog, $http, $route, consts) {
         $scope.submit = function (referral) {
-          $http.post(consts.apiUrl + '/UserReferrals/update', referral, {params: {where: {id: referral.id}}})
+          $http.post(consts.apiUrl + '/CustomerReferrals/update', referral, {params: {where: {id: referral.id}}})
             .then(function (response) {
 
               noty({type: 'success', text: 'Changes saved '});
@@ -126,16 +126,16 @@
             });
         };
 
-        $scope.users = angular.copy(users);
+        $scope.customers = angular.copy(customers);
         $scope.referral = angular.copy(referral);
         $scope.instructors = instructors;
       }])
-    .controller('ReferralNewController', ['$scope', 'instructors', 'users', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, instructors, users, ngDialog, $http, $route, consts) {
+    .controller('ReferralNewController', ['$scope', 'instructors', 'customers', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, instructors, customers, ngDialog, $http, $route, consts) {
         $scope.submit = function (referral) {
           referral.dt_create = new Date();
 
-          $http.post(consts.apiUrl + '/UserReferrals', referral)
+          $http.post(consts.apiUrl + '/CustomerReferrals', referral)
             .then(function (response) {
 
               noty({type: 'success', text: 'Referral saved'});
@@ -155,7 +155,7 @@
         };
 
         $scope.referral = {};
-        $scope.users = users;
+        $scope.customers = customers;
         $scope.instructors = instructors;
       }])
   ;

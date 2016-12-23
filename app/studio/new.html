@@ -56,6 +56,39 @@
             <input id="registrationPage" type="text" ng-model="studio.ds_registration_page" placeholder="registrationPage">
         </div>
 
+        <div class="pure-control-group">
+            <label for="nu_latitude">Latitude</label>
+            <input id="nu_latitude" type="text" ng-model="studio.nu_latitude" placeholder="Latitude">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="nu_longitude">Longitude</label>
+            <input id="nu_longitude" type="text" ng-model="studio.nu_longitude" placeholder="Longitude">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_login_font_color" style="float: left">Login Page Font Color</label>
+            <color-picker
+                    id="ds_login_font_color"
+                    ng-model="studio.ds_login_font_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_login_button_color" style="float: left">Login Page Button Color</label>
+            <color-picker
+                    id="ds_login_button_color"
+                    ng-model="studio.ds_login_button_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_login_background_image">Login Page Background Image</label>
+            <input id="ds_login_background_image" type="text" ng-model="studio.ds_login_background_image" placeholder="Background Image">
+        </div>
+
         <hr />
 
         <!--<h3>Bank Account Info</h3>-->
@@ -142,13 +175,13 @@
             <!--<input id="personal_id_number" type="text" ng-model="studio.personal_id_number" placeholder="Personal ID Number">-->
         <!--</div>-->
 
-        <div class="pure-control-group">
-            <label for="type">Type</label>
-            <select ng-model="studio.type" id="type">
-                <option>company</option>
-                <option>individual</option>
-            </select>
-        </div>
+        <!--<div class="pure-control-group">-->
+            <!--<label for="type">Type</label>-->
+            <!--<select ng-model="studio.type" id="type">-->
+                <!--<option>company</option>-->
+                <!--<option>individual</option>-->
+            <!--</select>-->
+        <!--</div>-->
 
         <div class="pure-controls">
             <button type="submit" class="pure-button pure-button-primary">Submit</button>

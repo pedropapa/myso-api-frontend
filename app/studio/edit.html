@@ -4,12 +4,12 @@
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Name</label>
-            <input id="name" type="text" ng-model="studio.no_name" placeholder="Name">
+            <input id="name" type="text" ng-model="studio.no_name" placeholder="Name"/>
         </div>
 
         <div class="pure-control-group">
             <label for="link">Link</label>
-            <input id="link" type="text" ng-model="studio.ds_link" placeholder="Link">
+            <input id="link" type="text" ng-model="studio.ds_link" placeholder="Link"/>
         </div>
 
         <div class="pure-control-group">
@@ -33,27 +33,64 @@
 
         <div class="pure-control-group">
             <label for="logo">Logo</label>
-            <input id="logo" type="text" ng-model="studio.ds_logo" placeholder="Logo">
+            <input id="logo" type="text" ng-model="studio.ds_logo" placeholder="Logo"/>
         </div>
 
         <div class="pure-control-group">
             <label for="homepage">Homepage</label>
-            <input id="homepage" type="text" ng-model="studio.ds_homepage" placeholder="Homepage">
+            <input id="homepage" type="text" ng-model="studio.ds_homepage" placeholder="Homepage"/>
         </div>
 
         <div class="pure-control-group">
             <label for="aboutUs">About Us</label>
-            <input id="aboutUs" type="text" ng-model="studio.ds_about_us" placeholder="About Us">
+            <input id="aboutUs" type="text" ng-model="studio.ds_about_us" placeholder="About Us"/>
         </div>
 
         <div class="pure-control-group">
             <label for="registrationPage">Registration Page</label>
-            <input id="registrationPage" type="text" ng-model="studio.ds_registration_page" placeholder="registrationPage">
+            <input id="registrationPage" type="text" ng-model="studio.ds_registration_page" placeholder="registrationPage"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="nu_latitude">Latitude</label>
+            <input id="nu_latitude" type="text" ng-model="studio.nu_latitude" placeholder="Latitude"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="nu_longitude">Longitude</label>
+            <input id="nu_longitude" type="text" ng-model="studio.nu_longitude" placeholder="Longitude"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_login_font_color" style="float: left">Login Page Font Color</label>
+            <color-picker
+                    id="ds_login_font_color"
+                    ng-model="studio.ds_login_font_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_login_button_color" style="float: left">Login Page Button Color</label>
+            <color-picker
+                    id="ds_login_button_color"
+                    ng-model="studio.ds_login_button_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_login_background_image">Login Page Background Image</label>
+            <input id="ds_login_background_image" type="text" ng-model="studio.ds_login_background_image" placeholder="Background Image"/>
         </div>
 
         <div class="pure-control-group">
             <label for="co_stripe_account">Stripe Account</label>
-            <input id="co_stripe_account" type="text" ng-model="studio.co_stripe_account" placeholder="Stripe Account ID">
+            <input id="co_stripe_account" type="text" ng-model="studio.co_stripe_account" placeholder="Stripe Account ID"/>
         </div>
 
         <div class="pure-controls">

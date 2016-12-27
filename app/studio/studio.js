@@ -100,8 +100,28 @@
 
       $scope.studio = angular.copy(studio);
     }])
-    .controller('StudioNewController', ['$scope', 'ngDialog', '$http', '$route', 'consts',
-      function($scope, ngDialog, $http, $route, consts) {
+    .controller('StudioNewController', ['$scope', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function($scope, ngDialog, $http, $route, consts, Upload) {
+        $scope.loginPageBackgroundImage = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function(studio) {
           $http.post(consts.apiUrl + '/Studios', studio)
             .then(function (response) {

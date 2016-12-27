@@ -1,6 +1,6 @@
 <h3>New Studio</h3>
 
-<form class="pure-form pure-form-aligned" ng-submit="submit(studio)">
+<form method="POST" class="pure-form pure-form-aligned" enctype="multipart/form-data" ng-submit="submit(studio)">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Name</label>
@@ -89,8 +89,15 @@
         <br />
 
         <div class="pure-control-group">
-            <label for="ds_login_background_image">Login Page Background Image</label>
-            <input id="ds_login_background_image" type="text" ng-model="studio.ds_login_background_image" placeholder="Background Image">
+            <label for="ds_login_background_image" style="float: left;">Login Page Background Image</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, loginPageBackgroundImage, studio, 'ds_login_background_image')">Upload on file select</button> <label ng-if="loginPageBackgroundImage.progress && loginPageBackgroundImage.progress > 0">{{ loginPageBackgroundImage.progress }}%</label>
+                <br />
+                <input id="ds_login_background_image" type="text" ng-model="studio.ds_login_background_image" placeholder="Background Image URL">
+
+                <img ngf-thumbnail="studio.ds_login_background_image" ng-show="studio.ds_login_background_image"/>
+            </div>
         </div>
 
         <hr />

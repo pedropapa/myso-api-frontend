@@ -1,7 +1,7 @@
 (function (angular) {
   'use strict';
 
-  angular.module('routes', ['ngRoute'])
+  angular.module('routes', ['ngRoute', 'ngFileUpload'])
     .config(['$locationProvider', '$routeProvider', '$httpProvider', function ($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('!');
 
@@ -52,7 +52,8 @@
   ])
     .constant('consts', {
       url: 'http://localhost:5000',
-      apiUrl: 'http://localhost:5000/api'
+      apiUrl: 'http://localhost:5000/api',
+      s3bucket: 'myso-main'
     })
     .factory('httpInterceptor', ['$q', '$location', '$cookies', function($q, $location, $cookies) {
       return {

@@ -17,6 +17,30 @@
             <select id="studio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="instructor.studioId"></select>
         </div>
 
+        <div class="pure-control-group">
+            <label for="nu_title_font_family" style="float: left;">Title font family</label>
+
+            <div style="display: table">
+                <input id="nu_title_font_family" type="text" ng-model="studio.nu_title_font_family" placeholder="Title font family">
+            </div>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_avatar" style="float: left;">Instructor grid image</label>
+
+            <div style="display: table">
+                <input id="ds_avatar" type="text" ng-model="studio.ds_avatar" placeholder="Instructor grid image">
+            </div>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_about_me" style="float: left;">Instructor grid about us</label>
+
+            <div style="display: table">
+                <input id="ds_about_me" type="text" ng-model="studio.ds_about_me" placeholder="Instructor grid about us">
+            </div>
+        </div>
+
         <div class="pure-controls">
             <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
         </div>

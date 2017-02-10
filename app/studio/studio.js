@@ -103,6 +103,10 @@
     .controller('StudioNewController', ['$scope', 'ngDialog', '$http', '$route', 'consts', 'Upload',
       function($scope, ngDialog, $http, $route, consts, Upload) {
         $scope.loginPageBackgroundImage = {};
+        $scope.dsPromoImg1 = {};
+        $scope.dsPromoImg2 = {};
+        $scope.dsPromoImg3 = {};
+        $scope.dsAboutUsImage = {};
 
         $scope.upload = function (file, model, formModel, formModelVar) {
           Upload.upload({

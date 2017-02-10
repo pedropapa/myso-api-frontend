@@ -88,6 +88,264 @@
             <input id="ds_login_background_image" type="text" ng-model="studio.ds_login_background_image" placeholder="Background Image"/>
         </div>
 
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_promo_img_1" style="float: left;">Promotional Image 1</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsPromoImg1, studio, 'ds_promo_img_1')">Upload on file select</button> <label ng-if="dsPromoImg1.progress && dsPromoImg1.progress > 0">{{ dsPromoImg1.progress }}%</label>
+                <br />
+                <input id="ds_promo_img_1" type="text" ng-model="studio.ds_promo_img_1" placeholder="Promotional Image 1">
+
+                <img ngf-thumbnail="studio.ds_promo_img_1" ng-show="studio.ds_promo_img_1"/>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_promo_img_2" style="float: left;">Promotional Image 2</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsPromoImg2, studio, 'ds_promo_img_2')">Upload on file select</button> <label ng-if="dsPromoImg2.progress && dsPromoImg2.progress > 0">{{ dsPromoImg2.progress }}%</label>
+                <br />
+                <input id="ds_promo_img_2" type="text" ng-model="studio.ds_promo_img_2" placeholder="Promotional Image 2">
+
+                <img ngf-thumbnail="studio.ds_promo_img_2" ng-show="studio.ds_promo_img_2"/>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_promo_img_3" style="float: left;">Promotional Image 3</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsPromoImg3, studio, 'ds_promo_img_3')">Upload on file select</button> <label ng-if="dsPromoImg3.progress && dsPromoImg3.progress > 0">{{ dsPromoImg3.progress }}%</label>
+                <br />
+                <input id="ds_promo_img_3" type="text" ng-model="studio.ds_promo_img_3" placeholder="Promotional Image 3">
+
+                <img ngf-thumbnail="studio.ds_promo_img_3" ng-show="studio.ds_promo_img_3"/>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_promo_video" style="float: left;">Promotional Video</label>
+
+            <div style="display: table">
+                <input id="ds_promo_video" type="text" ng-model="studio.ds_promo_video" placeholder="Promotional Video URL">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_grid_1_title" style="float: left;">Title of text block 1</label>
+
+            <div style="display: table">
+                <input id="ds_grid_1_title" type="text" ng-model="studio.ds_grid_1_title" placeholder="Title of text block 1">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_grid_1_text" style="float: left;">Text of text block 1</label>
+
+            <div style="display: table">
+                <input id="ds_grid_1_text" type="text" ng-model="studio.ds_grid_1_text" placeholder="Text of text block 1">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_grid_2_title" style="float: left;">Title of text block 2</label>
+
+            <div style="display: table">
+                <input id="ds_grid_2_title" type="text" ng-model="studio.ds_grid_2_title" placeholder="Title of text block 2">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_grid_2_text" style="float: left;">Text of text block 2</label>
+
+            <div style="display: table">
+                <input id="ds_grid_2_text" type="text" ng-model="studio.ds_grid_2_text" placeholder="Text of text block 2">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_testimonial_video_1" style="float: left;">Testimonial video 1</label>
+
+            <div style="display: table">
+                <input id="ds_testimonial_video_1" type="text" ng-model="studio.ds_testimonial_video_1" placeholder="URL of Testimonial video 1">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_testimonial_video_2" style="float: left;">Testimonial video 2</label>
+
+            <div style="display: table">
+                <input id="ds_testimonial_video_2" type="text" ng-model="studio.ds_testimonial_video_2" placeholder="URL of Testimonial video 2">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_grid1_page_body" style="float: left;">Testimonial video 3</label>
+
+            <div style="display: table">
+                <input id="ds_testimonial_video_3" type="text" ng-model="studio.ds_testimonial_video_3" placeholder="URL of Testimonial video 3">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_image" style="float: left;">Image of About Us Page</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsAboutUsImage, studio, 'ds_about_us_image')">Upload on file select</button> <label ng-if="dsAboutUsImage.progress && dsAboutUsImage.progress > 0">{{ dsAboutUsImage.progress }}%</label>
+                <br />
+                <input id="ds_about_us_image" type="text" ng-model="studio.ds_about_us_image" placeholder="Promotional Image 3">
+
+                <img ngf-thumbnail="studio.ds_about_us_image" ng-show="studio.ds_about_us_image"/>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_grid1_page_title" style="float: left;">Grid 1 title of about us page</label>
+
+            <div style="display: table">
+                <input id="ds_about_us_grid1_page_title" type="text" ng-model="studio.ds_about_us_grid1_page_title" placeholder="Grid 1 title of about us page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_grid1_page_body" style="float: left;">Grid 1 body of about us page</label>
+
+            <div style="display: table">
+                <input id="ds_about_us_grid1_page_body" type="text" ng-model="studio.ds_about_us_grid1_page_body" placeholder="Grid 1 body of about us page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_grid2_page_title" style="float: left;">Grid 2 title of about us page</label>
+
+            <div style="display: table">
+                <input id="ds_about_us_grid2_page_title" type="text" ng-model="studio.ds_about_us_grid2_page_title" placeholder="Grid 2 title of about us page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_about_us_grid2_page_body" style="float: left;">Grid 2 body of about us page</label>
+
+            <div style="display: table">
+                <input id="ds_about_us_grid2_page_body" type="text" ng-model="studio.ds_about_us_grid2_page_body" placeholder="Grid 2 body of about us page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_registration_page_title" style="float: left;">Title of registration page</label>
+
+            <div style="display: table">
+                <input id="ds_registration_page_title" type="text" ng-model="studio.ds_registration_page_title" placeholder="Title of registration page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_registration_page_body" style="float: left;">Body of registration page</label>
+
+            <div style="display: table">
+                <input id="ds_registration_page_body" type="text" ng-model="studio.ds_registration_page_body" placeholder="Body of registration page">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="ds_login_screen_bg_image" style="float: left;">Login screen background image</label>
+
+            <div style="display: table">
+                <input id="ds_login_screen_bg_image" type="text" ng-model="studio.ds_login_screen_bg_image" placeholder="Login screen background image">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="nu_button_color" style="float: left;">Button color</label>
+
+            <div style="display: table">
+                <input id="nu_button_color" type="text" ng-model="studio.nu_button_color" placeholder="Button color">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="nu_body_font_color" style="float: left;">Body font color</label>
+
+            <div style="display: table">
+                <input id="nu_body_font_color" type="text" ng-model="studio.nu_body_font_color" placeholder="Body font color">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="nu_title_text_color" style="float: left;">Title text color</label>
+
+            <div style="display: table">
+                <input id="nu_title_text_color" type="text" ng-model="studio.nu_title_text_color" placeholder="Title text color">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="nu_title_font_family" style="float: left;">Title font family</label>
+
+            <div style="display: table">
+                <input id="nu_title_font_family" type="text" ng-model="studio.nu_title_font_family" placeholder="Title font family">
+            </div>
+        </div>
+
+        <br />
+
+        <div class="pure-control-group">
+            <label for="nu_body_font_family" style="float: left;">Body font family</label>
+
+            <div style="display: table">
+                <input id="nu_body_font_family" type="text" ng-model="studio.nu_body_font_family" placeholder="Body font family">
+            </div>
+        </div>
+
+        <br />
+
         <div class="pure-control-group">
             <label for="co_stripe_account">Stripe Account</label>
             <input id="co_stripe_account" type="text" ng-model="studio.co_stripe_account" placeholder="Stripe Account ID"/>

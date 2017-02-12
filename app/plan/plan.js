@@ -94,6 +94,7 @@
       function ($scope, studios, plan, ngDialog, $http, $route, consts) {
         $scope.submit = function (plan) {
           var _plan = {
+            co_stripe_plan: plan.stripe_info.id,
             name: plan.name
           };
 

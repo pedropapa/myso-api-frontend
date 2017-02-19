@@ -1,0 +1,36 @@
+<h1>Listing Studio Opening Hours</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New StudioOpeningHour</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Weekday</th>
+			<th>Opened From</th>
+			<th>Opened Until</th>
+			<th>Studio</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="studioOpeningHour in studioOpeningHours">
+			<td>{{ studioOpeningHour.id }}</td>
+			<td class="title">{{ studioOpeningHour.nu_weekday | translateWeekday }}</td>
+			<td class="title">{{ studioOpeningHour.tm_opened_from }}</td>
+			<td class="title">{{ studioOpeningHour.tm_opened_until }}</td>
+			<td class="title">{{ studioOpeningHour.studio.no_name }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(studioOpeningHour)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(studioOpeningHour)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,37 @@
+<h3>New Studio Opening Hour</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(studioOpeningHour)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="studio">Studio</label>
+            <select id="studio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="studioOpeningHour.studioId"></select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="tmOpenedFrom">Opened from (HH:MM:SS)</label>
+            <input id="tmOpenedFrom" type="text" ng-model="studioOpeningHour.tm_opened_from" placeholder="Opened From">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="tmOpenedUntil">Opened until (HH:MM:SS)</label>
+            <input id="tmOpenedUntil" type="text" ng-model="studioOpeningHour.tm_opened_until" placeholder="Opened Until">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="nuWeekday">Weekday</label>
+            <select id="nuWeekday" ng-model="studioOpeningHour.nu_weekday">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+            </select>
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

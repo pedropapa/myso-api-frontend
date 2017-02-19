@@ -46,6 +46,7 @@
     'PlanClassModule',
     'ReferralModule',
     'PlanModule',
+    'StudioOpeningHourModule',
     'UserModule',
     'myApp.version',
     'color.picker'

@@ -7,6 +7,33 @@
             <select id="user" ng-options="user.id as user.ds_first_name for user in users" ng-model="customer.userId"></select>
         </div>
 
+        <h3>Payment info</h3>
+
+        <div class="pure-control-group">
+            <label for="cc_info_cc_number">Credit Card Number</label>
+            <input id="cc_info_cc_number" type="text" ng-model="customer.cc_info.cc_number" placeholder="CC Number"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="cc_info_cc_cvc">Credit Card CVC</label>
+            <input id="cc_info_cc_cvc" type="text" ng-model="customer.cc_info.cc_cvc" placeholder="CC CVC"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="cc_info_exp_month">Credit Card Expiration Month</label>
+            <input id="cc_info_exp_month" type="text" ng-model="customer.cc_info.exp_month" placeholder="CC Exp Month"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="cc_info_exp_year">Credit Card Expiration Year</label>
+            <input id="cc_info_exp_year" type="text" ng-model="customer.cc_info.exp_year" placeholder="CC Exp Year"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="cc_info_owner_address">Credit Card Owner Address</label>
+            <input id="cc_info_owner_address" type="text" ng-model="customer.cc_info.owner_address" placeholder="CC Owner Address"/>
+        </div>
+
         <div class="pure-controls">
             <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
         </div>

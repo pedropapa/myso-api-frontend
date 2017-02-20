@@ -8,8 +8,8 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="vimeoLink">Level</label>
-            <input id="vimeoLink" type="number" ng-model="instructor.nu_level" placeholder="Level">
+            <label for="level">Level</label>
+            <select id="level" ng-options="level.nu_level as level.nu_level for level in instructorLevels" ng-model="instructor.nu_level"></select>
         </div>
 
         <div class="pure-control-group">
@@ -31,6 +31,18 @@
             <div style="display: table">
                 <input id="ds_about_me" type="text" ng-model="instructor.ds_about_me" placeholder="Instructor grid about us">
             </div>
+        </div>
+
+        <br/>
+
+        <div class="pure-control-group">
+            <label for="ds_instagram_url">Instagram URL</label>
+            <input id="ds_instagram_url" type="text" ng-model="instructor.ds_instagram_url" placeholder="Instagram URL"/>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_facebook_url">Facebook URL</label>
+            <input id="ds_facebook_url" type="text" ng-model="instructor.ds_facebook_url" placeholder="Facebook URL"/>
         </div>
 
         <div class="pure-controls">

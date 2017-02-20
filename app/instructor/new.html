@@ -3,13 +3,13 @@
 <form class="pure-form pure-form-aligned" ng-submit="submit(instructor)">
     <fieldset>
         <div class="pure-control-group">
-            <label for="studio">User</label>
-            <select id="studio" ng-options="user.id as user.ds_first_name for user in users" ng-model="instructor.userId"></select>
+            <label for="user">User</label>
+            <select id="user" ng-options="user.id as user.ds_first_name for user in users" ng-model="instructor.userId"></select>
         </div>
 
         <div class="pure-control-group">
-            <label for="vimeoLink">Level</label>
-            <input id="vimeoLink" type="number" ng-model="instructor.nu_level" placeholder="Level">
+            <label for="level">Level</label>
+            <select id="level" ng-options="level.nu_level as level.nu_level for level in instructorLevels" ng-model="instructor.nu_level"></select>
         </div>
 
         <div class="pure-control-group">
@@ -38,6 +38,22 @@
 
             <div style="display: table">
                 <input id="ds_about_me" type="text" ng-model="studio.ds_about_me" placeholder="Instructor grid about us">
+            </div>
+        </div>
+        <br/>
+        <div class="pure-control-group">
+            <label for="ds_instagram_url" style="float: left;">Instagram URL</label>
+
+            <div style="display: table">
+                <input id="ds_instagram_url" type="text" ng-model="instructor.ds_instagram_url" placeholder="Instagram URL"/>
+            </div>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="ds_facebook_url" style="float: left;">Facebook URL</label>
+
+            <div style="display: table">
+                <input id="ds_facebook_url" type="text" ng-model="instructor.ds_facebook_url" placeholder="Facebook URL"/>
             </div>
         </div>
 

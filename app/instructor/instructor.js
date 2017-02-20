@@ -14,6 +14,13 @@
               return false;
             });
           }],
+          instructorLevels: ['consts', '$http', 'ApiService', function (consts, $http) {
+            return $http.get(consts.apiUrl + '/InstructorLevels').then(function (response) {
+              return response.data;
+            }, function (err) {
+              return false;
+            });
+          }],
           studios: ['consts', '$http', 'ApiService', function (consts, $http) {
             return $http.get(consts.apiUrl + '/Studios').then(function (response) {
               return response.data;
@@ -32,8 +39,8 @@
       });
     }])
 
-    .controller('InstructorController', ['$scope', 'studios', 'users', 'instructors', 'ngDialog', '$http', 'consts', '$route',
-      function ($scope, studios, users, instructors, ngDialog, $http, consts, $route) {
+    .controller('InstructorController', ['$scope', 'instructorLevels', 'studios', 'users', 'instructors', 'ngDialog', '$http', 'consts', '$route',
+      function ($scope, instructorLevels, studios, users, instructors, ngDialog, $http, consts, $route) {
         $scope.edit = function (instructor) {
           ngDialog.open({
             template: 'instructor/edit.html',
@@ -49,6 +56,9 @@
               }],
               studios: [function () {
                 return studios;
+              }],
+              instructorLevels: [function () {
+                return instructorLevels;
               }]
             }
           });
@@ -95,6 +105,9 @@
               }],
               studios: [function () {
                 return studios;
+              }],
+              instructorLevels: [function () {
+                return instructorLevels;
               }]
             }
           });
@@ -104,8 +117,8 @@
         $scope.users = users;
         $scope.studios = studios;
       }])
-    .controller('InstructorEditController', ['$scope', 'studios', 'users', 'instructor', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, studios, users, instructor, ngDialog, $http, $route, consts) {
+    .controller('InstructorEditController', ['$scope', 'instructorLevels', 'studios', 'users', 'instructor', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, instructorLevels, studios, users, instructor, ngDialog, $http, $route, consts) {
         $scope.submit = function (instructor) {
           $http.post(consts.apiUrl + '/Instructors/update', instructor, {params: {where: {id: instructor.id}}})
             .then(function (response) {
@@ -129,9 +142,16 @@
         $scope.users = angular.copy(users);
         $scope.instructor = angular.copy(instructor);
         $scope.studios = studios;
+        $scope.instructorLevels = angular.copy(instructorLevels);
+
+        $scope.instructor.nu_level = ""+ $scope.instructor.nu_level;
+
+        console.log($scope.instructor, instructorLevels);
+
+        // $scope.instructor.nu_level = _.find(instructorLevels, {nu_level: instructor.nu_level});
       }])
-    .controller('InstructorNewController', ['$scope', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, studios, users, ngDialog, $http, $route, consts) {
+    .controller('InstructorNewController', ['$scope', 'instructorLevels', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts',
+      function ($scope, instructorLevels, studios, users, ngDialog, $http, $route, consts) {
         $scope.submit = function (instructor) {
           instructor.dt_create = new Date();
 
@@ -157,6 +177,7 @@
         $scope.instructor = {};
         $scope.users = users;
         $scope.studios = studios;
+        $scope.instructorLevels = instructorLevels;
       }])
   ;
 })(angular, noty);

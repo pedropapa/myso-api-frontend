@@ -33,8 +33,15 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="vimeoLink">Profile Picture (URL)</label>
-            <input id="vimeoLink" type="text" ng-model="user.ds_profile_picture" placeholder="Profile picture">
+            <label for="vimeoLink" style="float: left;">Profile Picture</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsProfilePicture, user, 'ds_profile_picture')">Upload on file select</button> <label ng-if="dsProfilePicture.progress && dsProfilePicture.progress > 0">{{ dsProfilePicture.progress }}%</label>
+                <br />
+                <input id="vimeoLink" type="text" ng-model="user.ds_profile_picture" placeholder="Profile picture">
+
+                <img ngf-thumbnail="user.ds_profile_picture" width="80px" ng-show="user.ds_profile_picture"/>
+            </div>
         </div>
 
         <div class="pure-control-group">

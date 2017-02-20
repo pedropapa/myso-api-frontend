@@ -82,8 +82,10 @@
 
         $scope.users = users;
       }])
-    .controller('UserEditController', ['$scope', 'users', 'user', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, users, user, ngDialog, $http, $route, consts) {
+    .controller('UserEditController', ['$scope', 'users', 'user', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, users, user, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsProfilePicture = {};
+
         $scope.submit = function (user) {
           $http.post(consts.apiUrl + '/Users/update', user, {params: {where: {id: user.id}}})
             .then(function (response) {
@@ -104,11 +106,49 @@
             });
         };
 
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.users = angular.copy(users);
         $scope.user = angular.copy(user);
       }])
-    .controller('UserNewController', ['$scope', 'users', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, users, ngDialog, $http, $route, consts) {
+    .controller('UserNewController', ['$scope', 'users', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, users, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsProfilePicture = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function (user) {
           user.dt_create = new Date();
 

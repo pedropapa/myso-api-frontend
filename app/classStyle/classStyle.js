@@ -87,17 +87,35 @@
           });
         };
 
-        _.forEach(classStyles, function(classStyle) {
+        _.forEach(classStyles, function (classStyle) {
           classStyle.studio = _.find(studios, {id: classStyle.studioId});
         });
-
-        console.log(classStyles);
 
         $scope.classStyles = classStyles;
         $scope.studios = studios;
       }])
-    .controller('ClassStyleEditController', ['$scope', 'classStyle', 'studios', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, classStyle, studios, ngDialog, $http, $route, consts) {
+    .controller('ClassStyleEditController', ['$scope', 'classStyle', 'studios', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, classStyle, studios, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsThumbnail = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function (classStyle) {
           $http.post(consts.apiUrl + '/ClassStyles/update', classStyle, {params: {where: {id: classStyle.id}}})
             .then(function (response) {
@@ -121,8 +139,28 @@
         $scope.classStyle = angular.copy(classStyle);
         $scope.studios = studios;
       }])
-    .controller('ClassStyleNewController', ['$scope', 'studios', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, studios, ngDialog, $http, $route, consts) {
+    .controller('ClassStyleNewController', ['$scope', 'studios', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, studios, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsThumbnail = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function (classStyle) {
           $http.post(consts.apiUrl + '/ClassStyles', classStyle)
             .then(function (response) {

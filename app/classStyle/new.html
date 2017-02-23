@@ -18,8 +18,15 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="thumbnail">thumbnail</label>
-            <input id="thumbnail" type="text" ng-model="classStyle.ds_thumbnail" placeholder="Thumbnail">
+            <label for="ds_thumbnail" style="float: left">thumbnail</label>
+
+            <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsThumbnail, classStyle, 'ds_thumbnail')">Upload on file select</button> <label ng-if="dsThumbnail.progress && dsThumbnail.progress > 0">{{ dsThumbnail.progress }}%</label>
+                <br />
+                <input id="ds_thumbnail" type="text" ng-model="classStyle.ds_thumbnail" placeholder="Thumbnail">
+
+                <img ngf-thumbnail="classStyle.ds_thumbnail" width="80px" ng-show="classStyle.ds_thumbnail"/>
+            </div>
         </div>
 
         <div class="pure-control-group">

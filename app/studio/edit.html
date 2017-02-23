@@ -308,9 +308,11 @@
         <div class="pure-control-group">
             <label for="nu_button_color" style="float: left;">Button color</label>
 
-            <div style="display: table">
-                <input id="nu_button_color" type="text" ng-model="studio.nu_button_color" placeholder="Button color">
-            </div>
+            <color-picker
+                    id="nu_button_color"
+                    ng-model="studio.nu_button_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
         </div>
 
         <br />
@@ -318,9 +320,11 @@
         <div class="pure-control-group">
             <label for="nu_body_font_color" style="float: left;">Body font color</label>
 
-            <div style="display: table">
-                <input id="nu_body_font_color" type="text" ng-model="studio.nu_body_font_color" placeholder="Body font color">
-            </div>
+            <color-picker
+                    id="nu_body_font_color"
+                    ng-model="studio.nu_body_font_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
         </div>
 
         <br />
@@ -328,9 +332,11 @@
         <div class="pure-control-group">
             <label for="nu_title_text_color" style="float: left;">Title text color</label>
 
-            <div style="display: table">
-                <input id="nu_title_text_color" type="text" ng-model="studio.nu_title_text_color" placeholder="Title text color">
-            </div>
+            <color-picker
+                    id="nu_title_text_color"
+                    ng-model="studio.nu_title_text_color"
+                    options="{format: 'hex'}"
+            ></color-picker>
         </div>
 
         <br />

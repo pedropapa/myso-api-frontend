@@ -117,8 +117,28 @@
         $scope.users = users;
         $scope.studios = studios;
       }])
-    .controller('InstructorEditController', ['$scope', 'instructorLevels', 'studios', 'users', 'instructor', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, instructorLevels, studios, users, instructor, ngDialog, $http, $route, consts) {
+    .controller('InstructorEditController', ['$scope', 'instructorLevels', 'studios', 'users', 'instructor', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, instructorLevels, studios, users, instructor, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsAvatar = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function (instructor) {
           $http.post(consts.apiUrl + '/Instructors/update', instructor, {params: {where: {id: instructor.id}}})
             .then(function (response) {
@@ -150,8 +170,28 @@
 
         // $scope.instructor.nu_level = _.find(instructorLevels, {nu_level: instructor.nu_level});
       }])
-    .controller('InstructorNewController', ['$scope', 'instructorLevels', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts',
-      function ($scope, instructorLevels, studios, users, ngDialog, $http, $route, consts) {
+    .controller('InstructorNewController', ['$scope', 'instructorLevels', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, instructorLevels, studios, users, ngDialog, $http, $route, consts, Upload) {
+        $scope.dsAvatar = {};
+
+        $scope.upload = function (file, model, formModel, formModelVar) {
+          Upload.upload({
+            url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
+            data: {file: file}
+          }).then(function (resp) {
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+          }, function (resp) {
+            noty({
+              type: 'error',
+              text: 'An error has ocurred while uploading the image to the server.'
+            });
+
+            console.error(resp);
+          }, function (evt) {
+            model.progress = parseInt(100.0 * evt.loaded / evt.total);
+          });
+        };
+
         $scope.submit = function (instructor) {
           instructor.dt_create = new Date();
 

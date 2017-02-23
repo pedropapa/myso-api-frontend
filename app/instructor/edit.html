@@ -18,10 +18,14 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="ds_avatar" style="float: left;">Instructor grid image</label>
+            <label for="ds_avatar" style="float: left">Instructor grid image</label>
 
             <div style="display: table">
+                <button class="pure-button-primary" ngf-select="upload($file, dsAvatar, instructor, 'ds_avatar')">Upload on file select</button> <label ng-if="dsAvatar.progress && dsAvatar.progress > 0">{{ dsAvatar.progress }}%</label>
+                <br />
                 <input id="ds_avatar" type="text" ng-model="instructor.ds_avatar" placeholder="Instructor grid image">
+
+                <img ngf-thumbnail="instructor.ds_avatar" width="80px" ng-show="instructor.ds_avatar"/>
             </div>
         </div>
 

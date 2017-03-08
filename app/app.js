@@ -48,6 +48,8 @@
     'PlanModule',
     'StudioOpeningHourModule',
     'UserModule',
+    'RoleModule',
+    'RoleMappingModule',
     'myApp.version',
     'color.picker'
   ])

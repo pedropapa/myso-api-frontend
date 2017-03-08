@@ -1,0 +1,25 @@
+<h3>Editing Role</h3>
+
+<form class="pure-form pure-form-aligned" ng-submit="submit(role)">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="role" style="float: left;">Role name</label>
+
+            <div style="display: table">
+                <input id="role" type="text" ng-model="role.name" placeholder="Role name">
+            </div>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="description" style="float: left;">Role description</label>
+
+            <div style="display: table">
+                <input id="description" type="text" ng-model="role.description" placeholder="Role description">
+            </div>
+        </div>
+
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">Save Changes</button>
+        </div>
+    </fieldset>
+</form>

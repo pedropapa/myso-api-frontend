@@ -1,0 +1,35 @@
+<h1>Listing RoleMappings</h1>
+
+<p>
+	<button class="pure-button pure-button-primary" ng-click="new()">New RoleMapping</button>
+</p>
+
+<div class="table-container">
+	<table class="pure-table pure-table-horizontal">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Type</th>
+			<th>User/ID</th>
+			<th>Role</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="roleMapping in roleMappings">
+			<td>{{ roleMapping.id }}</td>
+			<td class="title">{{ roleMapping.principalType }}</td>
+			<td class="title" ng-if="roleMapping.user">{{ roleMapping.user.username }}</td>
+			<td class="title" ng-if="!roleMapping.user">{{ roleMapping.principalId }}</td>
+			<td class="title">{{ roleMapping.role.name }}</td>
+			<td class="actions">
+				<button class="pure-button" ng-click="edit(roleMapping)">Edit</button>
+				<button class="button-red pure-button" ng-click="remove(roleMapping)">
+					<img src="assets/icon-trash.svg" alt="Remove" />
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

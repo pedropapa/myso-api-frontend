@@ -88,7 +88,8 @@
             url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
             data: {file: file}
           }).then(function (resp) {
-            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+            console.log(resp);
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.data.result.files.file[0].name;
           }, function (resp) {
             noty({
               type: 'error',
@@ -137,7 +138,7 @@
             url: consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/upload',
             data: {file: file}
           }).then(function (resp) {
-            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.config.data.file.name;
+            model.location = formModel[formModelVar] = consts.apiUrl + '/AWSS3s/' + consts.s3bucket + '/download/' + resp.data.result.files.file[0].name;
           }, function (resp) {
             noty({
               type: 'error',

@@ -95,6 +95,7 @@
         $scope.submit = function (plan) {
           var _plan = {
             co_stripe_plan: plan.stripe_info.id,
+            studioId: plan.studioId,
             name: plan.name
           };
 

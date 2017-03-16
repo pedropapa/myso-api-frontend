@@ -8,7 +8,14 @@
         controller: 'UserController',
         resolve: {
           users: ['consts', '$http', 'ApiService', function (consts, $http) {
-            return $http.get(consts.apiUrl + '/Users').then(function (response) {
+            return $http.get(consts.apiUrl + '/Users', {params: {filter: {include: "mainStudio"}}}).then(function (response) {
+              return response.data;
+            }, function (err) {
+              return false;
+            });
+          }],
+          studios: ['consts', '$http', 'ApiService', function (consts, $http) {
+            return $http.get(consts.apiUrl + '/Studios').then(function (response) {
               return response.data;
             }, function (err) {
               return false;
@@ -18,8 +25,8 @@
       });
     }])
 
-    .controller('UserController', ['$scope', 'users', 'ngDialog', '$http', 'consts', '$route',
-      function ($scope, users, ngDialog, $http, consts, $route) {
+    .controller('UserController', ['$scope', 'studios', 'users', 'ngDialog', '$http', 'consts', '$route',
+      function ($scope, studios, users, ngDialog, $http, consts, $route) {
         $scope.edit = function (user) {
           ngDialog.open({
             template: 'user/edit.html',
@@ -32,6 +39,9 @@
               }],
               users: [function () {
                 return users;
+              }],
+              studios: [function () {
+                return studios;
               }]
             }
           });
@@ -75,15 +85,19 @@
             resolve: {
               users: [function () {
                 return users;
+              }],
+              studios: [function () {
+                return studios;
               }]
             }
           });
         };
 
         $scope.users = users;
+        $scope.studios = studios;
       }])
-    .controller('UserEditController', ['$scope', 'users', 'user', 'ngDialog', '$http', '$route', 'consts', 'Upload',
-      function ($scope, users, user, ngDialog, $http, $route, consts, Upload) {
+    .controller('UserEditController', ['$scope', 'studios', 'users', 'user', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, studios, users, user, ngDialog, $http, $route, consts, Upload) {
         $scope.dsProfilePicture = {};
 
         $scope.submit = function (user) {
@@ -125,10 +139,11 @@
         };
 
         $scope.users = angular.copy(users);
+        $scope.studios = angular.copy(studios);
         $scope.user = angular.copy(user);
       }])
-    .controller('UserNewController', ['$scope', 'users', 'ngDialog', '$http', '$route', 'consts', 'Upload',
-      function ($scope, users, ngDialog, $http, $route, consts, Upload) {
+    .controller('UserNewController', ['$scope', 'studios', 'users', 'ngDialog', '$http', '$route', 'consts', 'Upload',
+      function ($scope, studios, users, ngDialog, $http, $route, consts, Upload) {
         $scope.dsProfilePicture = {};
 
         $scope.upload = function (file, model, formModel, formModelVar) {
@@ -172,6 +187,7 @@
         };
 
         $scope.user = {};
+        $scope.studios = studios;
         $scope.users = users;
       }])
   ;

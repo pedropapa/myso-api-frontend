@@ -33,6 +33,11 @@
         </div>
 
         <div class="pure-control-group">
+            <label for="mainStudio">Main Studio</label>
+            <select id="mainStudio" ng-options="studio.id as studio.no_name for studio in studios" ng-model="user.mainStudioId"></select>
+        </div>
+
+        <div class="pure-control-group">
             <label for="vimeoLink" style="float: left;">Profile Picture</label>
 
             <div style="display: table">
